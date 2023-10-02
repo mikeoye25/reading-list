@@ -30,6 +30,12 @@ func (app *application) registerUserHandler(w http.ResponseWriter, r *http.Reque
 			Password:    input.Password,
 		}
 
+		err = user.HashPassword(user.Password);
+		if err != nil {
+			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+			return
+		}
+
 		err = app.models.Users.Insert(user)
 		if err != nil {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
