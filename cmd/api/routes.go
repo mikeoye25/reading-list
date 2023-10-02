@@ -8,5 +8,8 @@ func (app *application) routes() *http.ServeMux {
 	mux.HandleFunc("/v1/healthcheck", app.healthcheck)
 	mux.HandleFunc("/v1/books", app.getCreateBooksHandler)
 	mux.HandleFunc("/v1/books/", app.getUpdateDeleteBooksHandler)
+
+	mux.HandleFunc("/v1/auth/register", app.registerUserHandler)
+
 	return mux
 }

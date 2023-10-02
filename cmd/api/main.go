@@ -16,7 +16,7 @@ import (
 const version = "1.0.0"
 
 const (
-    HOST = "database"
+    HOST = "localhost"
     PORT = 5432
 )
 
